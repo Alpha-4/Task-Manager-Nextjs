@@ -3,7 +3,9 @@ import AuthForm from '@/components/AuthForm'
 
 const SigninPage = () => {
     return (
-        <AuthForm mode="signin" />
+        <div className='py-6'>
+            <AuthForm mode="signin" />
+        </div>
     )
 }
 

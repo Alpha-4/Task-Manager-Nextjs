@@ -2,7 +2,9 @@ import AuthForm from '@/components/AuthForm'
 
 const RegisterPage = () => {
     return (
-        <AuthForm mode="register" />
+        <div className='py-6'>
+            <AuthForm mode="register" />
+        </div>
     )
 }
 
