@@ -28,6 +28,7 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
   const jwt = req.cookies.get(process.env.COOKIE_NAME as string);
 
   if (!jwt) {
+    console.error("No cookie or jwt found");
     req.nextUrl.pathname = "/signin";
     return NextResponse.redirect(req.nextUrl);
   }
@@ -36,7 +37,7 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     await verifyJWT(jwt.value);
     return NextResponse.next();
   } catch (e) {
-    console.error(e);
+    console.error("error***" + e);
     req.nextUrl.pathname = "/signin";
     return NextResponse.redirect(req.nextUrl);
   }

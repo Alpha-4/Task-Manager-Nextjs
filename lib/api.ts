@@ -1,3 +1,7 @@
+const createUrl = (path: string) => {
+  return window.location.origin + path;
+};
+
 export const fetcher = async ({
   url,
   method,
@@ -9,7 +13,7 @@ export const fetcher = async ({
   body?: any;
   json?: boolean;
 }) => {
-  const res = await fetch(url, {
+  const res = await fetch(new Request(createUrl(url)), {
     method,
     ...(body && { body: JSON.stringify(body) }),
     headers: {
@@ -29,14 +33,22 @@ export const fetcher = async ({
   }
 };
 
-const initial = { email: "", password: "", firstName: "", lastName: "" };
-
-export const register = (user: typeof initial) => {
-  return fetcher({ url: "/api/register", method: "post", body: user });
+export const register = (user: {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}) => {
+  return fetcher({ url: "/api/register", method: "POST", body: user });
 };
 
-export const signin = (user: typeof initial) => {
-  return fetcher({ url: "/api/signin", method: "post", body: user });
+export const signin = (user: {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}) => {
+  return fetcher({ url: "/api/signin", method: "POST", body: user });
 };
 
 export const createNewProject = async (name: string) => {

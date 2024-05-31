@@ -49,12 +49,10 @@ export default function AuthForm({mode}: {mode: "register" | "signin"}) {
             }
         },
         [
-
             formState.email,
             formState.password,
             formState.firstName,
             formState.lastName,
-
         ]
     );
 
