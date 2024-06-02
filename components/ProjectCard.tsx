@@ -17,7 +17,7 @@ const formatDate = (date: Date) =>
         day: "numeric",
     });
 
-const ProjectCard: FC<{project: ProjectWithTasks}> = ({project}) => {
+const ProjectCard = (project: ProjectWithTasks) => {
     const completedCount = project.tasks.filter(
         (t) => t.status === "COMPLETED"
     ).length;
